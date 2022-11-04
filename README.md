@@ -1,4 +1,4 @@
 # Node Postgres API
 
-Functioning CRUD API backed by PostgresSQL database.
+Functioning RESTful API backed by PostgresSQL database.
 
