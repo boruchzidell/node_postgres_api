@@ -1,8 +1,11 @@
 let express = require('express');
+let morgan = require('morgan');
 
 let app = express();
 let port = 3000;
 
+// Middlewares
+app.use(morgan('common'));
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
@@ -37,9 +40,8 @@ app.get('/users/:id', (request, response) => {
   let id = parseInt(request.params.id);
 
   pool.query(`select * from users where id = ${id}`, (error, results) => {
-    // if (error) throw error;
+    if (error) throw error;
 
-    console.log(results);
     response.status(200).json(results.rows);
   });
 });
